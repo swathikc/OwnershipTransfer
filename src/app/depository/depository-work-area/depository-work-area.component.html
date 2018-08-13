@@ -1,0 +1,18 @@
+<ul class="nav nav-tabs">
+  <li class="nav-item">
+    <a class="btn btn-default" [ngClass]="property1 ? 'btn btn-dark' :'btn btn-default' " [routerLink]="['./createOwnership']" (click)="addAsset()">Create Ownership</a>
+  </li>
+  <li class="nav-item">
+    <a class="btn btn-default" [ngClass]="property2 ? 'btn btn-dark':'btn btn-default' " [routerLink]="['./viewMatches']" (click)="transferOwnership()">View Matches</a>
+  </li>
+  <li class="nav-item">
+    <a class="btn btn-default" [ngClass]="property3 ? 'btn btn-dark':'btn btn-default' " [routerLink]="['./viewAssets']" (click)="viewAssets()">View Assets</a>
+  </li>
+  <li class="nav-item">
+    <a class="btn btn-default" [ngClass]="property4 ? 'btn btn-dark':'btn btn-default' " [routerLink]="['./viewOwnerships']" (click)="viewOwnerships()">View Ownerships</a>
+  </li>
+</ul>
+
+<div class="container">
+  <router-outlet></router-outlet>
+</div>

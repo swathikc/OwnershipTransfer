@@ -1,0 +1,140 @@
+<div class="table-responsive-md">
+  <table frame="box" class="table table-hover">
+    <thead>
+      <tr>
+        <th scope="col">Asset ID</th>
+        <th scope="col">Name</th>
+        <th scope="col">Current Owner</th>
+        <th scope="col">New Owner</th>
+        <th scope="col">Seller</th>
+        <th scope="col">Buyer</th>
+        <th scope="col">Matched Date</th>
+        <th scope="col">Seller Signature</th>
+        <th scope="col">Buyer Signature</th>
+        <th width="14%" scope="col">Action</th>
+
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th scope="row">1</th>
+        <td>Land</td>
+        <td>Investor1</td>
+        <td>Investor2</td>
+        <td>Broker1</td>
+        <td>Broker2</td>
+        <td>03/20/2012</td>
+        <td>
+          <img src="https://upload.wikimedia.org/wikipedia/commons/b/b2/Celentano_signature.png">
+        </td>
+        <td>
+          <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Imza_ka_esi.png">
+        </td>
+        <td>
+          <button class="btn btn-success btn-sm" [routerLink]="['./ownershipTransferRequests']" data-toggle="modal" data-target="#myModal">Sign</button>
+          <button class="btn btn-danger btn-sm">Reject</button>
+        </td>
+      </tr>
+      <tr>
+        <th scope="row">1</th>
+        <td>Land</td>
+        <td>Investor1</td>
+        <td>Investor2</td>
+        <td>Broker1</td>
+        <td>Broker2</td>
+        <td>03/20/2012</td>
+        <td>
+          <img src="https://upload.wikimedia.org/wikipedia/commons/b/b2/Celentano_signature.png">
+        </td>
+        <td>
+          <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Imza_ka_esi.png">
+        </td>
+        <td>
+          <button class="btn btn-success btn-sm">Sign</button>
+          <button class="btn btn-danger btn-sm">Reject</button>
+        </td>
+      </tr>
+      <tr>
+        <th scope="row">1</th>
+        <td>Land</td>
+        <td>Investor1</td>
+        <td>Investor2</td>
+        <td>Broker1</td>
+        <td>Broker2</td>
+        <td>03/20/2012</td>
+        <td>
+          <img src="https://upload.wikimedia.org/wikipedia/commons/b/b2/Celentano_signature.png">
+        </td>
+        <td>
+          <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Imza_ka_esi.png">
+        </td>
+        <td>
+          <button class="btn btn-success btn-sm">Sign</button>
+          <button class="btn btn-danger btn-sm">Reject</button>
+        </td>
+      </tr>
+      <tr>
+        <th scope="row">1</th>
+        <td>Land</td>
+        <td>Investor1</td>
+        <td>Investor2</td>
+        <td>Broker1</td>
+        <td>Broker2</td>
+        <td>03/20/2012</td>
+        <td>
+          <img src="https://upload.wikimedia.org/wikipedia/commons/b/b2/Celentano_signature.png">
+        </td>
+        <td>
+          <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Imza_ka_esi.png">
+        </td>
+        <td>
+          <button class="btn btn-success btn-sm">Sign</button>
+          <button class="btn btn-danger btn-sm">Reject</button>
+        </td>
+      </tr>
+      <tr>
+        <th scope="row">1</th>
+        <td>Land</td>
+        <td>Investor1</td>
+        <td>Investor2</td>
+        <td>Broker1</td>
+        <td>Broker2</td>
+        <td>03/20/2012</td>
+        <td>
+          <img src="https://upload.wikimedia.org/wikipedia/commons/b/b2/Celentano_signature.png">
+        </td>
+        <td>
+          <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Imza_ka_esi.png">
+        </td>
+        <td>
+          <button class="btn btn-success btn-sm">Sign</button>
+          <button class="btn btn-danger btn-sm">Reject</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <!-- The Modal -->
+  <div class="modal fade" id="myModal">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title">Modal Heading</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+
+        <!-- Modal body -->
+        <div class="modal-body center">
+          <router-outlet></router-outlet>
+        </div>
+
+        <!-- Modal footer -->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>

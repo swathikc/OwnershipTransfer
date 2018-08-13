@@ -1,0 +1,25 @@
+<div class="col-md-6">
+  <button class="btn btn-primary" (click)="getAllOwnerships()">Refresh</button><br/><br/>
+  <table frame="box" class="table table-hover">
+    <thead>
+      <tr>
+        <th scope="col">Ownership ID</th>
+        <th scope="col">Asset ID</th>
+        <th scope="col">Owner</th>
+        <th scope="col">Previous OwnershipID</th>
+        <th scope="col">Depository</th>
+        <th scope="col">Date of Ownership</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor = "let ownership of ownershipEvents">
+        <td>{{ownership.args.id}} <button class="btn btn-sm btn-primary" (click)="getOwnership(ownership.args.id)">View Ownership</button></td>
+        <td>{{ownership.args.assetId}} <button class="btn btn-sm btn-primary" (click)="getAsset(ownership.args.assetId)">View Asset</button></td>
+        <td>{{ownership.args.owner}}</td>
+        <td>{{ownership.args.previousOwnershipId}}</td>
+        <td>{{ownership.args.depository}}</td>
+        <td>{{ownership.args.time}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

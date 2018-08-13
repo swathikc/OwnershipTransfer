@@ -1,0 +1,22 @@
+<h3>
+  Create Ownership</h3>
+<form #createOwnershipForm="ngForm" (submit)="createOwnership($event, createOwnershipForm)">
+  <!-- #form="ngForm" (submit)="createAsset($event, form)" -->
+  <div class="form-group col-md-6">
+    <label for="assetName">Asset ID</label>
+    <input type="text" class="form-control" name="assetId" [(ngModel)]="newOwnership.assetId" placeholder="">
+  </div>
+  <div class="form-group col-md-6">
+    <button type="button" class="btn btn-primary" (click)="getAssetAddress(newOwnership.assetId)">Get AssetContract Address</button>
+  </div>
+
+  <div class="form-group col-md-6">
+    <label for="assetContract">AssetContract Address</label>
+    <input type="text" class="form-control" name="assetAddress" [(ngModel)]="newOwnership.assetAddress" value="{{assetAddress}}" readonly>
+  </div>
+  <div class="form-group col-md-6">
+    <label for="assetName">Owner</label>
+    <input type="text" class="form-control" name="owner" [(ngModel)]="newOwnership.owner" placeholder="">
+  </div>
+  <button type="submit" class="btn btn-primary">Add</button>
+</form>

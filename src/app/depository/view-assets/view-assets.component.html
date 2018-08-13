@@ -1,0 +1,25 @@
+<div class="col-md-6">
+  <button class="btn btn-primary" (click)="getAllAssets()">Refresh</button><br/><br/>
+  <table frame="box" class="table table-hover">
+    <thead>
+      <tr>
+        <th scope="col">Asset ID</th>
+        <th scope="col">Asset Address</th>
+        <th scope="col">Name</th>
+        <th scope="col">Description</th>
+        <th scope="col">Owner</th>
+        <th scope="col">Date of Ownership</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor = "let asset of assetEvents">
+        <td>{{asset.args.id}}</td>
+        <td>{{asset.address}}</td>
+        <td>{{asset.args.name}}</td>
+        <td>{{asset.args.desc}}</td>
+        <td>{{asset.args.owner}}</td>
+        <td>{{asset.args.time}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

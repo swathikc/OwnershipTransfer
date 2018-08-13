@@ -1,0 +1,22 @@
+<h3>
+  Add Asset</h3>
+<form #addAssetForm="ngForm" (submit)="createAsset($event, addAssetForm)">
+  <!-- #form="ngForm" (submit)="createAsset($event, form)" -->
+  <div class="form-group col-md-6">
+    <label for="assetName">Asset Name</label>
+    <input type="text" class="form-control" name="assetName" [(ngModel)]="newAsset.assetName" placeholder="Ex: XYZ Company">
+  </div>
+  <div class="form-group col-md-6">
+    <label for="assetDescription">Asset Description</label>
+    <!-- <input type="text" class="form-control" id="assetDescription" placeholder="Asset Description"> -->
+    <textarea class="form-control" name="assetDescription" [(ngModel)]="newAsset.assetDescription" rows="4" item-width="450"
+      placeholder="Area, Cost, Age etc.."></textarea>
+  </div>
+  <div class="form-group col-md-6">
+    <label for="depositoryContract">Depository contract</label>
+    <select class="form-control" [(ngModel)]="newAsset.depositoryContract" name="depositoryContract">
+      <option *ngFor="let depository of depositoryContract" value="{{depository.address}}">{{depository.address}}</option>
+    </select>
+  </div>
+  <button type="submit" class="btn btn-primary">Add</button>
+</form>

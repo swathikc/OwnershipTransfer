@@ -1,0 +1,43 @@
+<h3>
+  Create order</h3>
+<form>
+  <!-- #form="ngForm" (submit)="createAsset($event, form)" -->
+  <div class="form-group col-md-6">
+    <label for="assetName">Owner</label>
+    <select class="form-control" (change)="selectedOwner($event.target.value)">
+      <option value="">Select Option...</option>
+      <option *ngFor="let ownership of ownershipEvents" value="{{ownership.args.owner}}">{{ownership.args.owner}}</option>
+    </select>
+  </div>
+  <div class="form-group col-md-6">
+    <label for="assetName">Asset ID</label>
+    <select class="form-control">
+      <option value="">Select Option...</option>
+      <option *ngFor="let asset of ownersAsset" value="{{asset}}">{{asset}}</option>
+    </select>
+  </div>
+  <div class="form-group col-md-6">
+    <label for="depositoryContract">Depository contract</label>
+    <select class="form-control">
+      <option value="">Select Option...</option>
+      <option *ngFor="let depository of depositoryContract" value="{{depository}}">{{depository.address}}</option>
+    </select>
+  </div>
+  <div class="form-group col-md-6">
+    <label for="assetName">Intent</label>
+    <select class="form-control">
+      <option value="">Select Option...</option>
+      <option value="Buy">Buy</option>
+      <option value="Sell">Sell</option>
+    </select>
+  </div>
+  <div class="form-group col-md-6">
+    <label for="owner">Broker</label>
+    <input type="text" class="form-control" id="broker" placeholder="Ex: John Smith">
+  </div>
+  <div class="form-group col-md-6">
+    <label for="owner">Claim</label>
+    <input type="text" class="form-control" id="claim" placeholder="Ex: John Smith">
+  </div>
+  <button type="submit" class="btn btn-primary">Sign and Create</button>
+</form>
