@@ -12,10 +12,12 @@ export class OrderService {
   newOrder: any;
   web3Service: Web3Service;
   orderEvents: any;
+  privateKey: any;
 
   constructor(web3Service: Web3Service) { 
     console.log('Constructor web3Service: ' + web3Service);
     this.web3Service = web3Service;
+    this.privateKey = "0x5ccdaffada2560dc53c855252681266c364ae8beeaae0df9816155f33d43b0b9";
     this.newOrder = {
       assetId: null,
       intent: null,
@@ -39,8 +41,8 @@ export class OrderService {
       console.log(account)
       console.log("Inside Order Service");
 
-      const orderDepository = await this.Order.deployed();
-      const createOrderTransaction = await orderDepository.createOrder.sendTransaction(assetId, intent, broker, data, ownerSignature, { from: account });
+      const deployedOrder = await this.Order.deployed();
+      const createOrderTransaction = await deployedOrder.createOrder.sendTransaction(assetId, intent, broker, ownerSignature, data, depositoryContractAddress , { from: account });
 
       if (createOrderTransaction) {
         alert("Create Order Transaction Successful");
@@ -51,6 +53,19 @@ export class OrderService {
     } catch (e) {
       console.log(e);
     }
+  }
+
+  async getAllOrderCreatedEvents() {
+    const deployedOrder = await this.Order.deployed();
+    console.log("Inside getAllAssetCreatedEvents()")
+    deployedOrder.OrderCreated({}, { fromBlock: 0, toBlock: 'latest' }).get((error, eventResult) => {
+      if (error)
+        console.log('Error in AssetCreated event handler: ' + error);
+      else {
+        console.log(eventResult);
+        this.orderEvents = eventResult;
+      }
+    });
   }
 
   async getOrderById(orderId) {

@@ -24,6 +24,12 @@ export class Web3Service {
 
   }
 
+  public sign(data, privateKey) {
+    console.log("Data: "+data+" ,PrivateKey: "+privateKey);
+    var signature = this.web3.eth.accounts.sign(data, privateKey);
+    return signature;
+  }
+
   public myFunc() {
     console.log("MyFunc()");
     var acc1 = this.web3.eth.accounts.create();

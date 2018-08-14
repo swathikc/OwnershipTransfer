@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { DepositoryService } from '../../services/depository/depository.service';
 import { AssetService } from '../../services/asset/asset.service';
+import { OrderService } from '../../services/order/order.service';
 
 @Component({
   selector: 'app-investor-work-area',
@@ -16,8 +17,9 @@ export class InvestorWorkAreaComponent implements OnInit {
   property4: boolean;
   depositoryService: DepositoryService;
   assetService: AssetService;
+  orderService: OrderService;
 
-  constructor(router: Router, depositoryService: DepositoryService, assetService: AssetService) {
+  constructor(router: Router, depositoryService: DepositoryService, assetService: AssetService, orderService: OrderService) {
     this.property1 = true;
     this.property2 = false;
     this.property3 = false;
@@ -25,6 +27,7 @@ export class InvestorWorkAreaComponent implements OnInit {
     router.navigateByUrl("investorWorkArea/addAsset");
     this.depositoryService = depositoryService;
     this.assetService = assetService;
+    this.orderService = orderService;
    }
 
   ngOnInit() {
@@ -67,6 +70,7 @@ export class InvestorWorkAreaComponent implements OnInit {
     this.assetService.getAllAssetCreatedEvents();
     this.depositoryService.getOwnershipCreatedEvents();
     this.assetService.getOwnershipUpdatedEvents();
+    this.orderService.getAllOrderCreatedEvents();
   }
 
 }

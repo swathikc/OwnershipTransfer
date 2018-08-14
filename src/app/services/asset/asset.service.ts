@@ -69,9 +69,9 @@ export class AssetService {
   }
 
   async getAllAssetCreatedEvents() {
-    const assetDepository = await this.Asset.deployed();
+    const deployedAsset = await this.Asset.deployed();
     console.log("Inside getAllAssetCreatedEvents()")
-    assetDepository.AssetCreated({}, { fromBlock: 0, toBlock: 'latest' }).get((error, eventResult) => {
+    deployedAsset.AssetCreated({}, { fromBlock: 0, toBlock: 'latest' }).get((error, eventResult) => {
       if (error)
         console.log('Error in AssetCreated event handler: ' + error);
       else {
@@ -82,9 +82,9 @@ export class AssetService {
   }
 
   async getOwnershipUpdatedEvents() {
-    const assetDepository = await this.Asset.deployed();
+    const deployedAsset = await this.Asset.deployed();
     console.log("Inside getAllAssetCreatedEvents()")
-    assetDepository.OwnershipUpdated({}, { fromBlock: 0, toBlock: 'latest' }).get((error, eventResult) => {
+    deployedAsset.OwnershipUpdated({}, { fromBlock: 0, toBlock: 'latest' }).get((error, eventResult) => {
       if (error)
         console.log('Error in AssetCreated event handler: ' + error);
       else {
