@@ -20,11 +20,11 @@ export class OrderService {
     this.privateKey = "0x5ccdaffada2560dc53c855252681266c364ae8beeaae0df9816155f33d43b0b9";
     this.newOrder = {
       assetId: null,
+      owner: null,
       intent: null,
       broker: null,
       data: null,
-      ownerSignature: null,
-      depositoryContractAddress: null
+      ownerSignature: null
     }
     this.web3Service.artifactsToContract(order_artifacts)
       .then((OrderAbstraction) => {
@@ -34,7 +34,7 @@ export class OrderService {
     this.orderEvents = [];
   }
 
-  async createOrder(assetId, intent, broker, data, ownerSignature, depositoryContractAddress) {
+  async createOrder(assetId, ownershipId, owner, intent, broker, data, ownerSignature) {
 
     try {
       var account = this.web3Service.accounts[0];
@@ -42,7 +42,7 @@ export class OrderService {
       console.log("Inside Order Service");
 
       const deployedOrder = await this.Order.deployed();
-      const createOrderTransaction = await deployedOrder.createOrder.sendTransaction(assetId, intent, broker, ownerSignature, data, depositoryContractAddress , { from: account });
+      const createOrderTransaction = await deployedOrder.createOrder.sendTransaction(assetId, ownershipId, owner, intent, broker, data, ownerSignature , { from: account });
 
       if (createOrderTransaction) {
         alert("Create Order Transaction Successful");

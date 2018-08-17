@@ -17,8 +17,8 @@ export class CreateOrderComponent implements OnInit {
   assetEvents: any;
   orderEvents: any;
   ownershipEvents: any;
-  owner: any;
-  ownersAsset: any;
+  assetSelected: any;
+  ownersOwnershipEvents: any;
   depositoryContract: any;
   newOrder: any;
   privateKey: any;
@@ -30,11 +30,14 @@ export class CreateOrderComponent implements OnInit {
     this.assetService = assetService;
     this.assetEvents = null;
     this.orderEvents = null;
+    this.assetSelected = null;
     this.ownershipEvents = null;
+    this.ownersOwnershipEvents = null;
     this.depositoryContract = null;
     this.privateKey = null;
     this.newOrder = {
       owner: null,
+      ownershipId: null,
       assetId: null,
       depositoryAddress: null,
       intent: null,
@@ -52,24 +55,41 @@ export class CreateOrderComponent implements OnInit {
     this.orderEvents = this.orderService.orderEvents;
   }
 
-  selectedOwner(value: any) {
-    if (value == "") {
+  selectedOwner(owner: any) {
+    if (owner == "") {
       alert("Please select a owner")
     }
     else {
-      this.owner = value;
-      this.ownersAsset = this.getAssetsOfOwner(this.owner);
+      this.ownersOwnershipEvents = this.getOwnershipOfOwner(owner);
     }
   }
 
-  getAssetsOfOwner(owner) {
-    var assets = [];
-    for (var ownership of this.depositoryService.ownershipEvents) {
-      if (ownership.args.owner == owner) {
-        assets.push(ownership.args.assetId);
+  selectedOwnership(ownershipId: any) {
+    if (ownershipId == "") {
+      alert("Please select a ownership")
+    }
+    else {
+      console.log(ownershipId);
+      this.assetSelected = this.getAssetId(ownershipId);
+    }
+  }
+
+  getAssetId(ownershipId) {
+    for(var ownership of this.ownersOwnershipEvents) {
+      if(ownership.id == ownershipId) {
+        return ownership.assetId;
       }
     }
-    return assets;
+  }
+
+  getOwnershipOfOwner(owner) {
+    var ownershipObjects = [];
+    for (var ownership of this.depositoryService.ownershipEvents) {
+      if (ownership.args.owner == owner) {
+        ownershipObjects.push(ownership.args);
+      }
+    }
+    return ownershipObjects;
   }
 
   getOwnerships() {
@@ -83,15 +103,15 @@ export class CreateOrderComponent implements OnInit {
     }
     console.log(this.newOrder);
     var owner = this.newOrder.owner;
+    var ownershipId = this.newOrder.ownershipId;
     var assetId = this.newOrder.assetId;
-    var depositoryAddress = this.newOrder.depositoryAddress;
     var intent = this.newOrder.intent;
     var broker = this.newOrder.broker;
     var data = this.newOrder.data;
     console.log("Sign: "+JSON.stringify(this.web3Service.sign(data, this.privateKey)));
     var ownerSignature = this.web3Service.sign(data, this.privateKey);
 
-    this.orderService.createOrder(assetId, intent, broker, data, ownerSignature.signature, depositoryAddress);
+    this.orderService.createOrder(assetId, ownershipId, owner, intent, broker, data, ownerSignature.signature);
 
   }
 

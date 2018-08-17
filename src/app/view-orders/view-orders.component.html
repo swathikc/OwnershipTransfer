@@ -1,0 +1,35 @@
+<h3>
+  Orders</h3>
+<div>
+  <form class="form-inline">
+    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+  </form>
+</div>
+<div class="row">
+  <div class="col-md-6">
+    <table frame="box" class="table table-hover">
+      <thead>
+        <tr>
+          <th scope="col">Order ID</th>
+          <th scope="col">Asset ID</th>
+          <th scope="col">Owner</th>
+          <th scope="col">Intent</th>
+          <th scope="col">Broker</th>
+          <th scope="col">Claim</th>
+          <th scope="col">Option</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let order of orderEvents">
+          <td>{{order.args.orderId}}</td>
+          <td>{{order.args.assetId}}</td>
+          <td>{{order.args.owner}}</td>
+          <td>{{order.args.intent}}</td>
+          <td>{{order.args.broker}}</td>
+          <td>{{order.args.data}}</td>
+          <td><button class="btn btn-sm btn-primary" (click)="verifyOrder(order)">Verify</button></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>

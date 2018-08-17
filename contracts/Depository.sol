@@ -41,8 +41,8 @@ contract Depository {
         ownership.id = keccak256(uintToByte32(random_number));
         ownership.previousOwnershipId = ownership.id;
         ownershipList[ownership.id] = ownership;
-        /* assetContract.updateOwnershipId(ownership.assetId, ownership.id); */
         emit OwnershipCreated(now, ownership.id, ownership.owner, ownership.previousOwnershipId, ownership.assetId, ownership.depository, this);
+        /* assetContract.updateOwnershipId(ownership.assetId, ownership.id); */
     }
 
     function createOwnership(address _owner, bytes32 _previousOwnershipId, bytes32 _assetId, address assetAddress) public onlyDepository {
@@ -55,8 +55,8 @@ contract Depository {
         uint random_number = uint(blockhash(block.number-1))%10 + 1;
         ownership.id = keccak256(uintToByte32(random_number));
         ownershipList[ownership.id] = ownership;
-        /* assetContract.updateOwnershipId(ownership.assetId, ownership.id); */ 
         emit OwnershipCreated(now, ownership.id, ownership.owner, ownership.previousOwnershipId, ownership.assetId, ownership.depository, this);
+        /* assetContract.updateOwnershipId(ownership.assetId, ownership.id); */
     }
     
     function getOwnerById(bytes32 ownership_id) public constant returns(address) {

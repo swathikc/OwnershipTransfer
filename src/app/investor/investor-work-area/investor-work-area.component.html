@@ -3,13 +3,10 @@
     <a class="btn btn-default" [ngClass]="property1 ? 'btn btn-dark':'btn btn-default' " (click)="createAsset()" [routerLink]="['./addAsset']">Add Asset</a>
   </li>
   <li class="nav-item">
-    <a class="btn btn-default" [ngClass]="property2 ? 'btn btn-dark':'btn btn-default' " (click)="authorizeBroker()" [routerLink]="['./addBroker']">Authorize Broker</a>
+    <a class="btn btn-default" [ngClass]="property2 ? 'btn btn-dark':'btn btn-default' " (click)="exchangePending()" [routerLink]="['./viewPendingMatches']">Exchange Pending</a>
   </li>
   <li class="nav-item">
-    <a class="btn btn-default" [ngClass]="property3 ? 'btn btn-dark':'btn btn-default' " (click)="exchangePending()" [routerLink]="['./viewPendingMatches']">Exchange Pending</a>
-  </li>
-  <li class="nav-item">
-    <a class="btn btn-default" [ngClass]="property4 ? 'btn btn-dark':'btn btn-default' " (click)="createOrder()" [routerLink]="['./createOrder']">Create Order</a>
+    <a class="btn btn-default" [ngClass]="property3 ? 'btn btn-dark':'btn btn-default' " (click)="createOrder()" [routerLink]="['./createOrder']">Create Order</a>
   </li>
 </ul>
 <div class="container">

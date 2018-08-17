@@ -13,20 +13,19 @@ import { CreateOwnershipComponent } from './depository/create-ownership/create-o
 import { OwnershipTransferRequestComponent } from './depository/ownership-transfer-request/ownership-transfer-request.component';
 import { ViewMatchesComponent } from './depository/view-matches/view-matches.component';
 import { AddAssetComponent } from './investor/add-asset/add-asset.component';
-import { AddBrokerComponent } from './investor/add-broker/add-broker.component';
 import { InvestorWorkAreaComponent } from './investor/investor-work-area/investor-work-area.component';
 import { ViewPendingMatchesComponent } from './investor/view-pending-matches/view-pending-matches.component';
 import { CreateOrderComponent } from './investor/create-order/create-order.component';
 import { MatchedAssetsComponent } from './match/matched-assets/matched-assets.component';
 import { UtilModule } from './util/util.module';
 import { ViewOwnershipsComponent } from './depository/view-ownerships/view-ownerships.component';
+import { ViewOrdersComponent } from './view-orders/view-orders.component';
 
 const appRoutes: Routes = [
   {
     path: 'investorWorkArea', component: InvestorWorkAreaComponent, children:
       [
         { path: 'addAsset', component: AddAssetComponent },
-        { path: 'addBroker', component: AddBrokerComponent },
         { path: 'viewPendingMatches', component: ViewPendingMatchesComponent },
         { path: 'createOrder', component: CreateOrderComponent }
       ]
@@ -43,6 +42,7 @@ const appRoutes: Routes = [
       ]
   },
   { path: 'match', component: MatchedAssetsComponent },
+  { path: 'orders', component: ViewOrdersComponent },
   { path: '', redirectTo: '/investor/investorWorkArea', pathMatch: 'full' },
   { path: '**', redirectTo: '/investor/investorWorkArea', pathMatch: 'full' }
 
@@ -57,12 +57,12 @@ const appRoutes: Routes = [
     OwnershipTransferRequestComponent,
     ViewMatchesComponent,
     AddAssetComponent,
-    AddBrokerComponent,
     InvestorWorkAreaComponent,
     ViewPendingMatchesComponent,
     CreateOrderComponent,
     MatchedAssetsComponent,
-    ViewOwnershipsComponent
+    ViewOwnershipsComponent,
+    ViewOrdersComponent
   ],
   imports: [
     CommonModule,

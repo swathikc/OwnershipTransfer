@@ -9,18 +9,15 @@
     </select>
   </div>
   <div class="form-group col-md-6">
-    <label for="assetName">Asset ID</label>
-    <select class="form-control"  [(ngModel)] = "newOrder.assetId" name="assetId">
+    <label for="assetName">Ownership ID</label>
+    <select class="form-control"  [(ngModel)] = "newOrder.ownershipId" name="ownershipId" (change)="selectedOwnership($event.target.value)">
       <option value="">Select Option...</option>
-      <option *ngFor="let asset of ownersAsset" value="{{asset}}">{{asset}}</option>
+      <option *ngFor="let ownership of ownersOwnershipEvents" value="{{ownership.id}}">{{ownership.id}}</option>
     </select>
   </div>
   <div class="form-group col-md-6">
-    <label for="depositoryContract">Depository contract</label>
-    <select class="form-control"  [(ngModel)] = "newOrder.depositoryAddress" name="depositoryAddress">
-      <option value="">Select Option...</option>
-      <option *ngFor="let depository of depositoryContract" value="{{depository.address}}">{{depository.address}}</option>
-    </select>
+    <label for="asset">AssetId</label>
+    <input type="text" class="form-control" id="assetId" [(ngModel)] = "newOrder.assetId" name="assetId" value="{{assetSelected}}" placeholder="Ex: Asset" readonly>
   </div>
   <div class="form-group col-md-6">
     <label for="assetName">Intent</label>
