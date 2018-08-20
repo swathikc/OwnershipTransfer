@@ -13,6 +13,7 @@ export class DepositoryService {
   assetEvents: any;
   depositoryContract: any;
   ownershipEvents: any;
+  ownershipResult: any;
 
   constructor(web3Service: Web3Service) {
     console.log('Constructor web3Service: ' + web3Service);
@@ -63,8 +64,7 @@ export class DepositoryService {
 
       const deployedDepository = await this.Depository.deployed();
       var ownershipResult = await deployedDepository.getOwnershipById.call(ownershipId);
-
-      alert("OwnershipResult: "+ownershipResult);
+      return ownershipResult;
     } catch (e) {
       console.log(e);
     }

@@ -1,5 +1,3 @@
-<h3>
-  Orders</h3>
 <div>
   <form class="form-inline">
     <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
@@ -7,8 +5,39 @@
   </form>
 </div>
 <div class="row">
-  <div class="col-md-6">
-    <table frame="box" class="table table-hover">
+  <div class="col-md-12">
+    <h3>Orders</h3>
+    <table frame="box" class="table">
+      <tbody>
+        <tr *ngFor="let order of orderEvents">
+          <div class="container">
+            <h5>Order ID: </h5>
+            <p>{{order.args.orderId}}</p>
+            <h5>Asset ID: </h5>
+            <p>{{order.args.assetId}}</p>
+            <h5>Owner: </h5>
+            <p>{{order.args.owner}}</p>
+            <h5>Intent: </h5>
+            <p>{{order.args.intent}}</p>
+            <h5>Broker: </h5>
+            <p>{{order.args.broker}}</p>
+            <h5>Claim: </h5>
+            <p>{{order.args.data}}</p>
+            <div class="row">
+              <div>
+                <button class="btn btn-primary" (click)="verifyOrder(order)">Verify</button>
+              </div>
+              <div>
+                <img src="../images/checked.png">
+              </div>
+            </div>
+          </div>
+          <hr>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- <table frame="box" class="table table-hover">
       <thead>
         <tr>
           <th scope="col">Order ID</th>
@@ -31,5 +60,5 @@
           <td><button class="btn btn-sm btn-primary" (click)="verifyOrder(order)">Verify</button></td>
         </tr>
       </tbody>
-    </table>
+    </table> -->
   </div>

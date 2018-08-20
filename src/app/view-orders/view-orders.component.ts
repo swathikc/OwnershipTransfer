@@ -14,7 +14,9 @@ export class ViewOrdersComponent implements OnInit {
   orderService: OrderService;
   depositoryService: DepositoryService;
   orderEvents: any;
+  ownership: any;
   validOrder: boolean;
+  verifiedOrders: any;
 
   constructor(web3Service: Web3Service, orderService: OrderService, depositoryService: DepositoryService) {
     this.web3Service = web3Service;
@@ -23,6 +25,14 @@ export class ViewOrdersComponent implements OnInit {
     this.orderEvents = null;
     this.validOrder = false;
     this.getAllOrders();
+    this.verifiedOrders = [];
+    this.ownership = {
+      ownershipId: null,
+      assetId: null,
+      previousOwnershipId: null,
+      owner: null,
+      depository: null
+    }
    }
 
   ngOnInit() {
@@ -35,7 +45,7 @@ export class ViewOrdersComponent implements OnInit {
   } 
 
   verifyOrder(order) {
-    var orderId = order.args.orderId;
+    var ownershipId = order.args.ownershipId;
     var assetId = order.args.assetId;
     var owner = order.args.owner;
     var intent = order.args.intent;
@@ -46,8 +56,36 @@ export class ViewOrdersComponent implements OnInit {
     const publicKey = this.web3Service.verifySignature(data, ownerSignature);
     console.log("PK: "+publicKey.toLowerCase());
     console.log("Owner: "+owner);
-    if(owner == publicKey.toLowerCase()) {
-      alert("Valid");
+    this.depositoryService.getOwnershipById(ownershipId).then(ownership => {
+      console.log("Ownership: " + ownership);
+      var ownershipAfterSplit = ownership.toString().split(",");
+      console.log("ownershipAfterSplit: " + ownershipAfterSplit);
+      var ownershipId = ownershipAfterSplit[0];
+      var owner = ownershipAfterSplit[1];
+      var previousOwnershipId = ownershipAfterSplit[2];
+      var asset_Id = ownershipAfterSplit[3];
+      var depository = ownershipAfterSplit[4];
+      this.ownership.ownershipId = ownershipId;
+      this.ownership.owner = owner;
+      this.ownership.previousOwnershipId = previousOwnershipId;
+      this.ownership.assetId = asset_Id;
+      this.ownership.depository = depository;
+      console.log("assetId: "+assetId);
+      console.log("this.ownership.assetId: "+this.ownership.assetId)
+      if(assetId == this.ownership.assetId && owner == this.ownership.owner && owner == publicKey.toLowerCase()) {
+        this.validOrder = true;
+        alert("Valid");
+        this.verifiedOrders.push(order);
+        return true;
+      }
+    })
+  }
+
+  verified(_order) {
+    for(let order in this.verifiedOrders) {
+      if(order == _order) {
+        return true;
+      }
     }
   }
 

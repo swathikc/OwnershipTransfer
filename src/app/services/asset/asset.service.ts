@@ -62,7 +62,7 @@ export class AssetService {
       const deployedAsset = await this.Asset.deployed();
       var assetResult = await deployedAsset.getAssetById.call(assetId);
 
-      alert("AssetResult: "+assetResult);
+      return assetResult;
     } catch (e) {
       console.log(e);
     }

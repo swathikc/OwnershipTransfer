@@ -1,5 +1,7 @@
 <div class="col-md-6">
-  <button class="btn btn-primary" (click)="getAllOwnerships()">Refresh</button><br/><br/>
+  <button class="btn btn-primary" (click)="getAllOwnerships()">Refresh</button>
+  <br/>
+  <br/>
   <table frame="box" class="table table-hover">
     <thead>
       <tr>
@@ -12,9 +14,13 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor = "let ownership of ownershipEvents">
-        <td>{{ownership.args.id}} <button class="btn btn-sm btn-primary" (click)="getOwnership(ownership.args.id)">View Ownership</button></td>
-        <td>{{ownership.args.assetId}} <button class="btn btn-sm btn-primary" (click)="getAsset(ownership.args.assetId)">View Asset</button></td>
+      <tr *ngFor="let ownership of ownershipEvents">
+        <td>{{ownership.args.id}}
+          <button class="btn btn-sm btn-primary" data-toggle="modal" data-target="#viewOwnership" (click)="getOwnership(ownership.args.id)">View Ownership</button>
+        </td>
+        <td>{{ownership.args.assetId}}
+          <button class="btn btn-sm btn-primary" data-toggle="modal" data-target="#viewAsset" (click)="getAsset(ownership.args.assetId)">View Asset</button>
+        </td>
         <td>{{ownership.args.owner}}</td>
         <td>{{ownership.args.previousOwnershipId}}</td>
         <td>{{ownership.args.depository}}</td>
@@ -22,4 +28,60 @@
       </tr>
     </tbody>
   </table>
+  <!-- Modal -->
+  <div class="modal fade" id="viewOwnership" tabindex="-1" role="dialog" aria-labelledby="viewOwnershipCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLongTitle">Ownership Details</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <h5>Asset ID: </h5>
+          <p>{{ownership.assetId}}</p>
+          <h5>Ownership ID: </h5>
+          <p>{{ownership.ownershipId}}</p>
+          <h5>Previous Ownership ID: </h5>
+          <p>{{ownership.previousOwnershipId}}</p>
+          <h5>Owner: </h5>
+          <p>{{ownership.owner}}</p>
+          <h5>Depository: </h5>
+          <p>{{ownership.depository}}</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Modal -->
+  <div class="modal fade" id="viewAsset" tabindex="-1" role="dialog" aria-labelledby="viewAssetCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLongTitle">Asset Details</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <h5>Asset ID: </h5>
+          <p>{{asset.id}}</p>
+          <h5>Name: </h5>
+          <p>{{asset.name}}</p>
+          <h5>Description: </h5>
+          <p>{{asset.description}}</p>
+          <h5>Ownership ID: </h5>
+          <p>{{asset.ownershipId}}</p>
+          <h5>Depository: </h5>
+          <p>{{asset.depository}}</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

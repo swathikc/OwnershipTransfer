@@ -104,13 +104,13 @@ export class CreateOrderComponent implements OnInit {
     console.log(this.newOrder);
     var owner = this.newOrder.owner;
     var ownershipId = this.newOrder.ownershipId;
-    var assetId = this.newOrder.assetId;
+    var assetId = this.assetSelected;
     var intent = this.newOrder.intent;
     var broker = this.newOrder.broker;
     var data = this.newOrder.data;
     console.log("Sign: "+JSON.stringify(this.web3Service.sign(data, this.privateKey)));
     var ownerSignature = this.web3Service.sign(data, this.privateKey);
-
+    console.log("assetId in order: "+assetId);
     this.orderService.createOrder(assetId, ownershipId, owner, intent, broker, data, ownerSignature.signature);
 
   }
