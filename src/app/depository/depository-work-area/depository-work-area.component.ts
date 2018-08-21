@@ -71,7 +71,7 @@ export class DepositoryWorkAreaComponent implements OnInit {
     this.depositoryService.getDepositoryCreatedEvents();
     this.assetService.getAllAssetCreatedEvents();
     this.depositoryService.getOwnershipCreatedEvents();
-    this.assetService.getOwnershipUpdatedEvents();
+    // this.assetService.ownerUpdatedEvents();
     this.orderService.getAllOrderCreatedEvents();
   }
 

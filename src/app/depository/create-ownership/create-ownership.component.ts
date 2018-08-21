@@ -12,7 +12,7 @@ export class CreateOwnershipComponent implements OnInit {
   newOwnership: any;
   depositoryService: DepositoryService;
   assetService: AssetService;
-  ownershipEvents: any;
+  ownerEvents: any;
   ownership: any;
   assetId: any;
   assetEvents: any;
@@ -27,7 +27,7 @@ export class CreateOwnershipComponent implements OnInit {
     }
     this.depositoryService = depositoryService;
     this.assetService = assetService;
-    this.ownershipEvents = [];
+    this.ownerEvents = [];
     this.assetEvents = [];
     this.assetAddress = null;
     this.asset = null;
@@ -63,10 +63,10 @@ export class CreateOwnershipComponent implements OnInit {
 
   }
 
-  checkOwnershipUpdatedEvent() {
-    this.assetService.getOwnershipUpdatedEvents();
-    this.ownershipEvents = this.assetService.ownershipUpdatedEvents;
-    console.log("OwnershipUpdated Events: " + JSON.stringify(this.ownershipEvents));
+  checkOwnerUpdatedEvent() {
+    this.assetService.getOwnerUpdatedEvents();
+    this.ownerEvents = this.assetService.ownerUpdatedEvents;
+    console.log("OwnerUpdated Events: " + JSON.stringify(this.ownerEvents));
   }
 
   getAllAssets() {

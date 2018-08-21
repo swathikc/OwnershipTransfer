@@ -4,12 +4,12 @@ h3 {
 table {
     margin-top: 20px;
     padding-top: 10px;
-    border-top: 10px
+    border-top: 10px;
 }
 tbody tr div{
     padding: 10px;
 }
 img {
-    width: 10px;
-    height: 10px;
+    width: 30px;
+    height: 30px;
 }

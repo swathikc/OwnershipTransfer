@@ -15,7 +15,6 @@ export class ViewOrdersComponent implements OnInit {
   depositoryService: DepositoryService;
   orderEvents: any;
   ownership: any;
-  validOrder: boolean;
   verifiedOrders: any;
 
   constructor(web3Service: Web3Service, orderService: OrderService, depositoryService: DepositoryService) {
@@ -23,7 +22,6 @@ export class ViewOrdersComponent implements OnInit {
     this.orderService = orderService;
     this.depositoryService = depositoryService;
     this.orderEvents = null;
-    this.validOrder = false;
     this.getAllOrders();
     this.verifiedOrders = [];
     this.ownership = {
@@ -73,17 +71,19 @@ export class ViewOrdersComponent implements OnInit {
       console.log("assetId: "+assetId);
       console.log("this.ownership.assetId: "+this.ownership.assetId)
       if(assetId == this.ownership.assetId && owner == this.ownership.owner && owner == publicKey.toLowerCase()) {
-        this.validOrder = true;
-        alert("Valid");
         this.verifiedOrders.push(order);
+        alert("Verification Successful");
         return true;
+      }
+      else {
+        alert("Verification Failed");
       }
     })
   }
 
   verified(_order) {
-    for(let order in this.verifiedOrders) {
-      if(order == _order) {
+    for(var i=0; i<this.verifiedOrders.length; i++) {
+      if(this.verifiedOrders[i].toString().toLowerCase() == _order.toString().toLowerCase()) {
         return true;
       }
     }

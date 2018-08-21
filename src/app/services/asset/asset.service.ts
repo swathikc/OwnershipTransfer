@@ -11,7 +11,7 @@ export class AssetService {
   newAsset: any;
   web3Service: Web3Service;
   assetEvents: any;
-  ownershipUpdatedEvents: any;
+  ownerUpdatedEvents: any;
   assetContract: any;
 
   constructor(web3Service: Web3Service) {
@@ -31,7 +31,7 @@ export class AssetService {
 
   }
 
-  async createAsset(assetName, assetDescription, depositoryAddress) {
+  async createAsset(assetName, assetDescription, owner, depositoryAddress) {
 
     try {
       var account = this.web3Service.accounts[0];
@@ -39,7 +39,7 @@ export class AssetService {
       console.log("Inside Asset Service");
 
       const deployedAsset = await this.Asset.deployed();
-      const createAssetTransaction = await deployedAsset.createAsset.sendTransaction(assetName, assetDescription, depositoryAddress, { from: account });
+      const createAssetTransaction = await deployedAsset.createAsset.sendTransaction(assetName, assetDescription, owner, depositoryAddress, { from: account });
 
       if (createAssetTransaction) {
         alert("Create Asset Transaction Successful");
@@ -81,15 +81,15 @@ export class AssetService {
     });
   }
 
-  async getOwnershipUpdatedEvents() {
+  async getOwnerUpdatedEvents() {
     const deployedAsset = await this.Asset.deployed();
-    console.log("Inside getAllAssetCreatedEvents()")
-    deployedAsset.OwnershipUpdated({}, { fromBlock: 0, toBlock: 'latest' }).get((error, eventResult) => {
+    console.log("Inside getOwnerUpdatedEvents()")
+    deployedAsset.OwnerUpdated({}, { fromBlock: 0, toBlock: 'latest' }).get((error, eventResult) => {
       if (error)
-        console.log('Error in AssetCreated event handler: ' + error);
+        console.log('Error in getOwnerUpdatedEvents event handler: ' + error);
       else {
         console.log(eventResult);
-        this.ownershipUpdatedEvents = eventResult;
+        this.ownerUpdatedEvents = eventResult;
       }
     });
   }

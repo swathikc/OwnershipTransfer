@@ -18,6 +18,8 @@ export class CreateOrderComponent implements OnInit {
   orderEvents: any;
   ownershipEvents: any;
   assetSelected: any;
+  brokerSelected: any;
+  intentSelected: any;
   ownersOwnershipEvents: any;
   depositoryContract: any;
   newOrder: any;
@@ -31,6 +33,8 @@ export class CreateOrderComponent implements OnInit {
     this.assetEvents = null;
     this.orderEvents = null;
     this.assetSelected = null;
+    this.brokerSelected = null;
+    this.intentSelected = null;
     this.ownershipEvents = null;
     this.ownersOwnershipEvents = null;
     this.depositoryContract = null;
@@ -44,7 +48,7 @@ export class CreateOrderComponent implements OnInit {
       broker: null,
       data: null,
       ownerSignature: null
-    }
+    };
   }
 
   ngOnInit() {
@@ -64,6 +68,25 @@ export class CreateOrderComponent implements OnInit {
     }
   }
 
+  selectedBroker(broker: any) {
+    if (broker == "") {
+      alert("Please select a broker");
+    }
+    else {
+      this.brokerSelected = broker;
+      this.newOrder.data = "I authorize "+this.brokerSelected+" to "+this.intentSelected+" "+this.assetSelected;
+    }
+  }
+
+  selectedIntent(intent: any) {
+    if (intent == "") {
+      alert("Please select a intent");
+    }
+    else {
+      this.intentSelected = intent;
+    }
+  }
+
   selectedOwnership(ownershipId: any) {
     if (ownershipId == "") {
       alert("Please select a ownership")
@@ -75,8 +98,8 @@ export class CreateOrderComponent implements OnInit {
   }
 
   getAssetId(ownershipId) {
-    for(var ownership of this.ownersOwnershipEvents) {
-      if(ownership.id == ownershipId) {
+    for (var ownership of this.ownersOwnershipEvents) {
+      if (ownership.id == ownershipId) {
         return ownership.assetId;
       }
     }
@@ -108,9 +131,9 @@ export class CreateOrderComponent implements OnInit {
     var intent = this.newOrder.intent;
     var broker = this.newOrder.broker;
     var data = this.newOrder.data;
-    console.log("Sign: "+JSON.stringify(this.web3Service.sign(data, this.privateKey)));
+    console.log("Sign: " + JSON.stringify(this.web3Service.sign(data, this.privateKey)));
     var ownerSignature = this.web3Service.sign(data, this.privateKey);
-    console.log("assetId in order: "+assetId);
+    console.log("assetId in order: " + assetId);
     this.orderService.createOrder(assetId, ownershipId, owner, intent, broker, data, ownerSignature.signature);
 
   }
@@ -118,7 +141,7 @@ export class CreateOrderComponent implements OnInit {
   getAllOrderEvents() {
     this.orderService.getAllOrderCreatedEvents();
     this.orderEvents = this.orderService.orderEvents;
-    console.log("Order events: "+this.orderEvents);
+    console.log("Order events: " + this.orderEvents);
   }
 
 }

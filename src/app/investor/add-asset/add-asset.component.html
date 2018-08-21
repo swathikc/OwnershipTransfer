@@ -13,6 +13,10 @@
       placeholder="Area, Cost, Age etc.."></textarea>
   </div>
   <div class="form-group col-md-6">
+      <label for="owner">Owner</label>
+      <input type="text" class="form-control" name="owner" [(ngModel)]="newAsset.owner" placeholder="Ex: 0x1234...">
+    </div>
+  <div class="form-group col-md-6">
     <label for="depositoryContract">Depository contract</label>
     <select class="form-control" [(ngModel)]="newAsset.depositoryContract" name="depositoryContract">
       <option *ngFor="let depository of depositoryContract" value="{{depository.address}}">{{depository.address}}</option>

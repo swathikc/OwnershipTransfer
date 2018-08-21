@@ -21,6 +21,7 @@ export class AddAssetComponent implements OnInit {
     this.newAsset = {
       assetName: null,
       assetDescription: null,
+      owner: null,
       depositoryContract: null
     }
     this.assetService = assetService;
@@ -43,9 +44,10 @@ export class AddAssetComponent implements OnInit {
     console.log(this.newAsset);
     var assetName = this.newAsset.assetName;
     var assetDescription = this.newAsset.assetDescription;
+    var owner = this.newAsset.owner;
     var depositoryContract = this.newAsset.depositoryContract;
 
-    this.assetService.createAsset(assetName, assetDescription, depositoryContract);
+    this.assetService.createAsset(assetName, assetDescription, owner, depositoryContract);
   }
 
   getAllAssetCreatedEvents() {
