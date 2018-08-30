@@ -1,0 +1,26 @@
+<h3>
+  My Inventory</h3>
+<div>
+  <label for="owner">Owner</label>
+  <input type="text" class="form-control col-md-6" id="data" [(ngModel)]="owner" name="data" (change)="getAssets(owner)">
+</div>
+<div class="col-md-6">
+  <table frame="box" class="table table-hover">
+    <thead>
+      <tr>
+        <th scope="col">Asset ID</th>
+        <th scope="col">Name</th>
+        <th scope="col">Description</th>
+        <th scope="col">Intent</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let asset of ownerAssetList">
+        <th scope="row">{{asset.args.id}}</th>
+        <td>{{asset.args.name}}</td>
+        <td>{{asset.args.desc}}</td>
+        <td>Sell</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

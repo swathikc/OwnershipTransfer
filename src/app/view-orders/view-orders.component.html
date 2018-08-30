@@ -25,7 +25,7 @@
             <p>{{order.args.data}}</p>
             <div class="row">
               <div class="col-md-1">
-                <button class="btn btn-primary" (click)="verifyOrder(order)">Verify</button>
+                <button class="btn btn-primary" (click)="verifyOrder(order)" data-toggle="modal" data-target="#orderVerification">Verify</button>
               </div>
               <div class="col-md-1">
                 <img *ngIf="verified(order)" src="https://banner2.kisspng.com/20180315/xve/kisspng-check-mark-scalable-vector-graphics-computer-icons-green-tick-mark-5aab1c239076c9.6603115115211632995917.jpg">
@@ -37,28 +37,42 @@
       </tbody>
     </table>
 
-    <!-- <table frame="box" class="table table-hover">
-      <thead>
-        <tr>
-          <th scope="col">Order ID</th>
-          <th scope="col">Asset ID</th>
-          <th scope="col">Owner</th>
-          <th scope="col">Intent</th>
-          <th scope="col">Broker</th>
-          <th scope="col">Claim</th>
-          <th scope="col">Option</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let order of orderEvents">
-          <td>{{order.args.orderId}}</td>
-          <td>{{order.args.assetId}}</td>
-          <td>{{order.args.owner}}</td>
-          <td>{{order.args.intent}}</td>
-          <td>{{order.args.broker}}</td>
-          <td>{{order.args.data}}</td>
-          <td><button class="btn btn-sm btn-primary" (click)="verifyOrder(order)">Verify</button></td>
-        </tr>
-      </tbody>
-    </table> -->
+    <!-- Modal -->
+    <div class="modal fade" id="orderVerification" tabindex="-1" role="dialog" aria-labelledby="orderVerificationLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title text-center" id="orderVerificationLabel">Verification</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body text-center">
+            <div *ngIf="assetVerified">
+              <p>Asset Verified</p>
+              <img src="https://banner2.kisspng.com/20180315/xve/kisspng-check-mark-scalable-vector-graphics-computer-icons-green-tick-mark-5aab1c239076c9.6603115115211632995917.jpg">
+            </div>
+            <div *ngIf="ownershipVerified">
+              <p>Ownership Verified</p>
+              <img src="https://banner2.kisspng.com/20180315/xve/kisspng-check-mark-scalable-vector-graphics-computer-icons-green-tick-mark-5aab1c239076c9.6603115115211632995917.jpg">
+            </div>
+            <div *ngIf="brokerVerified">
+              <p>Broker Verified</p>
+              <img src="https://banner2.kisspng.com/20180315/xve/kisspng-check-mark-scalable-vector-graphics-computer-icons-green-tick-mark-5aab1c239076c9.6603115115211632995917.jpg">
+            </div>
+            <div *ngIf="intentVerified">
+              <p>Intent Verified</p>
+              <img src="https://banner2.kisspng.com/20180315/xve/kisspng-check-mark-scalable-vector-graphics-computer-icons-green-tick-mark-5aab1c239076c9.6603115115211632995917.jpg">
+            </div>
+            <div *ngIf="matchVerified">
+              <p>Match Verified</p>
+              <img src="https://banner2.kisspng.com/20180315/xve/kisspng-check-mark-scalable-vector-graphics-computer-icons-green-tick-mark-5aab1c239076c9.6603115115211632995917.jpg">
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>

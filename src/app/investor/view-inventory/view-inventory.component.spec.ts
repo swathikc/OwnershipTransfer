@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ViewPendingMatchesComponent } from './view-pending-matches.component';
+import { ViewInventoryComponent } from './view-inventory.component';
 
-describe('ViewPendingMatchesComponent', () => {
-  let component: ViewPendingMatchesComponent;
-  let fixture: ComponentFixture<ViewPendingMatchesComponent>;
+describe('ViewInventoryComponent', () => {
+  let component: ViewInventoryComponent;
+  let fixture: ComponentFixture<ViewInventoryComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ViewPendingMatchesComponent ]
+      declarations: [ ViewInventoryComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ViewPendingMatchesComponent);
+    fixture = TestBed.createComponent(ViewInventoryComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

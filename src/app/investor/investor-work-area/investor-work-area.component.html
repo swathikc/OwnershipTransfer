@@ -1,9 +1,9 @@
 <ul class="nav nav-tabs">
   <li class="nav-item">
-    <a class="btn btn-default" [ngClass]="property1 ? 'btn btn-dark':'btn btn-default' " (click)="createAsset()" [routerLink]="['./addAsset']">Add Asset</a>
+    <a class="btn btn-default" [ngClass]="property1 ? 'btn btn-dark':'btn btn-default' " (click)="viewInventory()" [routerLink]="['./viewInventory']">Inventory</a>
   </li>
   <li class="nav-item">
-    <a class="btn btn-default" [ngClass]="property2 ? 'btn btn-dark':'btn btn-default' " (click)="exchangePending()" [routerLink]="['./viewPendingMatches']">Exchange Pending</a>
+    <a class="btn btn-default" [ngClass]="property2 ? 'btn btn-dark':'btn btn-default' " (click)="createAsset()" [routerLink]="['./addAsset']">Add Asset</a>
   </li>
   <li class="nav-item">
     <a class="btn btn-default" [ngClass]="property3 ? 'btn btn-dark':'btn btn-default' " (click)="createOrder()" [routerLink]="['./createOrder']">Create Order</a>

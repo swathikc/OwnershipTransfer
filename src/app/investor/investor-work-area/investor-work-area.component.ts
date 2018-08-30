@@ -22,7 +22,7 @@ export class InvestorWorkAreaComponent implements OnInit {
     this.property1 = true;
     this.property2 = false;
     this.property3 = false;
-    router.navigateByUrl("investorWorkArea/addAsset");
+    router.navigateByUrl("investorWorkArea/viewInventory");
     this.depositoryService = depositoryService;
     this.assetService = assetService;
     this.orderService = orderService;
@@ -31,24 +31,24 @@ export class InvestorWorkAreaComponent implements OnInit {
   ngOnInit() {
   }
 
-  createAsset() {
+  viewInventory() {
     this.property1 = true;
     this.property2 = false;
     this.property3 = false;
     this.initialize();
   }
 
-  exchangePending() {
+  createAsset() {
     this.property1 = false;
-    this.property2 = false;
-    this.property3 = true;
+    this.property2 = true;
+    this.property3 = false;
     this.initialize();
   }
 
   createOrder() {
     this.property1 = false;
     this.property2 = false;
-    this.property3 = false;
+    this.property3 = true;
     this.initialize();
   }
 

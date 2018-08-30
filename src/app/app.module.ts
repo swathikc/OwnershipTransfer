@@ -14,19 +14,19 @@ import { OwnershipTransferRequestComponent } from './depository/ownership-transf
 import { ViewMatchesComponent } from './depository/view-matches/view-matches.component';
 import { AddAssetComponent } from './investor/add-asset/add-asset.component';
 import { InvestorWorkAreaComponent } from './investor/investor-work-area/investor-work-area.component';
-import { ViewPendingMatchesComponent } from './investor/view-pending-matches/view-pending-matches.component';
 import { CreateOrderComponent } from './investor/create-order/create-order.component';
 import { MatchedAssetsComponent } from './match/matched-assets/matched-assets.component';
 import { UtilModule } from './util/util.module';
 import { ViewOwnershipsComponent } from './depository/view-ownerships/view-ownerships.component';
 import { ViewOrdersComponent } from './view-orders/view-orders.component';
+import { ViewInventoryComponent } from './investor/view-inventory/view-inventory.component';
 
 const appRoutes: Routes = [
   {
     path: 'investorWorkArea', component: InvestorWorkAreaComponent, children:
       [
+        { path: 'viewInventory', component: ViewInventoryComponent },
         { path: 'addAsset', component: AddAssetComponent },
-        { path: 'viewPendingMatches', component: ViewPendingMatchesComponent },
         { path: 'createOrder', component: CreateOrderComponent }
       ]
   },
@@ -58,11 +58,11 @@ const appRoutes: Routes = [
     ViewMatchesComponent,
     AddAssetComponent,
     InvestorWorkAreaComponent,
-    ViewPendingMatchesComponent,
     CreateOrderComponent,
     MatchedAssetsComponent,
     ViewOwnershipsComponent,
-    ViewOrdersComponent
+    ViewOrdersComponent,
+    ViewInventoryComponent
   ],
   imports: [
     CommonModule,
