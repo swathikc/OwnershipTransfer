@@ -16,7 +16,6 @@ export class CreateOwnershipComponent implements OnInit {
   ownership: any;
   assetId: any;
   assetEvents: any;
-  assetAddress: any;
   asset: any;
 
   constructor(depositoryService: DepositoryService, assetService: AssetService) {
@@ -29,7 +28,6 @@ export class CreateOwnershipComponent implements OnInit {
     this.assetService = assetService;
     this.ownerEvents = [];
     this.assetEvents = [];
-    this.assetAddress = null;
     this.asset = null;
     this.getAllAssets();
   }
@@ -74,7 +72,7 @@ export class CreateOwnershipComponent implements OnInit {
     console.log(this.assetEvents);
   }
 
-  getAssetAddress(assetId) {
+  getAssetDetails(assetId) {
     // alert(assetId);
     console.log(this.assetEvents);
     console.log(this.assetEvents[0]);
@@ -82,7 +80,8 @@ export class CreateOwnershipComponent implements OnInit {
     for (var i = 0; i < this.assetEvents.length; i++) {
       asset = this.assetEvents[i];
       if (asset["args"]["id"] == assetId) {
-        this.assetAddress = asset["address"];
+        this.newOwnership.assetAddress = asset["address"];
+        this.newOwnership.owner = asset["args"]["owner"];
       }
     }
   }

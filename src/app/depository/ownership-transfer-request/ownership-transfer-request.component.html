@@ -1,3 +1,37 @@
-<p>
-  ownership-transfer-request works!
-</p>
+<h3>
+    Transfer Ownership</h3>
+  <form class="container">
+    <!-- #form="ngForm" (submit)="createAsset($event, form)" -->
+    <div class="row">
+      <div class="form-group col-md-6">
+        <label for="assetName">Asset ID</label>
+        <input type="text" class="form-control" id="assetId" placeholder="Ex: XYZ Company">
+      </div>
+      <div class="form-group col-md-6">
+        <label for="assetName">Asset Name</label>
+        <input type="text" class="form-control" id="assetName" placeholder="Ex: XYZ Company">
+      </div>
+      <div class="form-group col-md-6">
+        <label for="assetDescription">Asset Description</label>
+        <!-- <input type="text" class="form-control" id="assetDescription" placeholder="Asset Description"> -->
+        <textarea class="form-control" rows="4" item-width="450" placeholder="Area, Cost, Age etc.."></textarea>
+      </div>
+      <div class="form-group col-md-6">
+        <label for="assetName">Current Owner</label>
+        <input type="text" class="form-control" id="assetName" placeholder="Ex: XYZ Company">
+      </div>
+      <div class="form-group col-md-6">
+        <label for="assetName">New Owner</label>
+        <input type="text" class="form-control" id="assetName" placeholder="Ex: XYZ Company">
+      </div>
+      <div class="form-group col-md-6">
+        <label for="date">Date</label>
+        <input type="text" class="form-control" id="date" placeholder="MM/DD/YY">
+      </div>
+      <div class="form-group col-md-6">
+        <label for="owner">Owner</label>
+        <input type="text" class="form-control" id="owner" placeholder="Ex: John Smith">
+      </div>
+    </div>
+    <button type="submit" class="btn btn-primary col-md-3">Add</button>
+  </form>
