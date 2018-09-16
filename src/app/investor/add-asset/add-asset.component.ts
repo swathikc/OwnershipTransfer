@@ -48,6 +48,10 @@ export class AddAssetComponent implements OnInit {
     var depositoryContract = this.newAsset.depositoryContract;
 
     this.assetService.createAsset(assetName, assetDescription, owner, depositoryContract);
+    this.newAsset.assetName = "";
+    this.newAsset.assetDescription = "";
+    this.newAsset.owner = "";
+    this.newAsset.depositoryContract = "";
   }
 
   getAllAssetCreatedEvents() {

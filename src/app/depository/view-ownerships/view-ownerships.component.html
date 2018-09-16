@@ -15,16 +15,16 @@
     </thead>
     <tbody>
       <tr *ngFor="let ownership of ownershipEvents">
-        <td>{{ownership.args.id}}
+        <td data-toggle="tooltip" data-placement="top" title={{ownership.args.id}}>{{shortID(ownership.args.id)}}
           <button class="btn btn-sm btn-primary" data-toggle="modal" data-target="#viewOwnership" (click)="getOwnership(ownership.args.id)">View Ownership</button>
         </td>
-        <td>{{ownership.args.assetId}}
+        <td data-toggle="tooltip" data-placement="top" title={{ownership.args.assetId}}>{{shortID(ownership.args.assetId)}}
           <button class="btn btn-sm btn-primary" data-toggle="modal" data-target="#viewAsset" (click)="getAsset(ownership.args.assetId)">View Asset</button>
         </td>
-        <td>{{ownership.args.owner}}</td>
-        <td>{{ownership.args.previousOwnershipId}}</td>
-        <td>{{ownership.args.depository}}</td>
-        <td>{{ownership.args.time}}</td>
+        <td data-toggle="tooltip" data-placement="top" title={{ownership.args.owner}}>{{shortID(ownership.args.owner)}}</td>
+        <td data-toggle="tooltip" data-placement="top" title={{ownership.args.previousOwnershipId}}>{{shortID(ownership.args.previousOwnershipId)}}</td>
+        <td data-toggle="tooltip" data-placement="top" title={{ownership.args.depository}}>{{shortID(ownership.args.depository)}}</td>
+        <td>{{getDate(ownership.args.time)}}</td>
       </tr>
     </tbody>
   </table>

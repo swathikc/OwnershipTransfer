@@ -67,6 +67,9 @@ export class DepositoryWorkAreaComponent implements OnInit {
     this.initialize();
   }
 
+  //this function is to fetch all the events to keep the application data updated
+  /* this function is called on the click of any tab as the data retrieval in blockchain is asynchronous, 
+  it takes some time to give the updated data after calling the function */
   initialize() {
     this.depositoryService.getDepositoryCreatedEvents();
     this.assetService.getAllAssetCreatedEvents();

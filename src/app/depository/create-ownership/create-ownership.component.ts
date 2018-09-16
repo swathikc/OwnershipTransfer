@@ -16,6 +16,7 @@ export class CreateOwnershipComponent implements OnInit {
   ownership: any;
   assetId: any;
   assetEvents: any;
+  newAssets: any;
   asset: any;
 
   constructor(depositoryService: DepositoryService, assetService: AssetService) {
@@ -27,13 +28,17 @@ export class CreateOwnershipComponent implements OnInit {
     this.depositoryService = depositoryService;
     this.assetService = assetService;
     this.ownerEvents = [];
-    this.assetEvents = [];
     this.asset = null;
+    this.newAssets = [];
     this.getAllAssets();
+    this.getNewAssets();
   }
 
   ngOnInit() {
     this.assetService.getAllAssetCreatedEvents();
+    this.depositoryService.getOwnershipCreatedEvents();
+    this.getAllAssets();
+    this.getNewAssets();
   }
 
   createOwnership(event, createOwnershipForm) {
@@ -49,6 +54,10 @@ export class CreateOwnershipComponent implements OnInit {
 
     this.depositoryService.createFirstOwnership(owner, assetId, assetAddress);
     this.depositoryService.getOwnershipCreatedEvents();
+    this.newOwnership.assetId = "";
+    this.newOwnership.assetAddress = "";
+    this.newOwnership.owner = "";
+    this.getNewAssets();
 
   }
 
@@ -86,4 +95,29 @@ export class CreateOwnershipComponent implements OnInit {
     }
   }
 
+  //function to get the assetId's for which the ownership is not already created
+  getNewAssets() {
+    console.log("Inside getNewAssets function");
+    var allAssets = this.assetEvents;
+    var ownershipEvents = this.depositoryService.ownershipEvents;
+
+    this.newAssets = [];
+    // asset loop
+    for (var i = 0; i < this.assetEvents.length; i++) {
+      let assetId = this.assetEvents[i].args.id;
+      var ownershipExists = false;
+      // ownership loop
+      for (var j = 0; j < ownershipEvents.length; j++) {
+        let ownershipAssetId = ownershipEvents[j].args.assetId;
+        if (assetId == ownershipAssetId) {
+          ownershipExists = true;
+        }
+      }
+      if (!ownershipExists) {
+        this.newAssets.push(assetId);
+      }
+    }
+  }
+
 }
+

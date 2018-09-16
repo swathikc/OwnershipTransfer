@@ -14,7 +14,13 @@
   </div>
   <div class="form-group col-md-6">
       <label for="owner">Owner</label>
-      <input type="text" class="form-control" name="owner" [(ngModel)]="newAsset.owner" placeholder="Ex: 0x1234...">
+      <!-- For Demo purpose these are pre-defined owners -->
+      <select class="form-control" name="owner" [(ngModel)]="newAsset.owner">
+        <option selected>Choose...</option>
+        <option value="0x39eC92f54285dE4B6f444Ad9055e8Ab981Eb7e61">0x39eC92f54285dE4B6f444Ad9055e8Ab981Eb7e61</option>
+        <option value="0x5772ea865cfa51eefa3c9e7fb6258a4f3e6585c1">0x5772ea865cfa51eefa3c9e7fb6258a4f3e6585c1</option>
+        <option value="0xd84cd39e8d774a6dcdfcdf83eb9bef990753df9b">0xd84cd39e8d774a6dcdfcdf83eb9bef990753df9b</option>
+      </select>
     </div>
   <div class="form-group col-md-6">
     <label for="depositoryContract">Depository contract</label>

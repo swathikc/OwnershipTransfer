@@ -34,6 +34,26 @@ export class DepositoryService {
 
   }
 
+  async createFirstOwnership(owner, assetId, assetAddress) {
+    try {
+
+      var account = this.web3Service.accounts[0];
+      console.log(account)
+
+      const deployedDepository = await this.Depository.deployed();
+      const createOwnershipTransaction = await deployedDepository.createFirstOwnership.sendTransaction(owner, assetId, assetAddress, { from: account });
+
+      if (createOwnershipTransaction) {
+        alert("Create First Ownership Transaction Successful");
+        console.log("createOwnershipTransaction: " + createOwnershipTransaction);
+      } else {
+        alert("Create First Ownership Transaction Failed");
+      }
+    } catch (e) {
+      console.log(e);
+    }
+  }
+
   async createOwnership(owner, previousOwnershipId, assetId) {
     event.preventDefault();
     try {
@@ -65,26 +85,6 @@ export class DepositoryService {
       const deployedDepository = await this.Depository.deployed();
       var ownershipResult = await deployedDepository.getOwnershipById.call(ownershipId);
       return ownershipResult;
-    } catch (e) {
-      console.log(e);
-    }
-  }
-
-  async createFirstOwnership(owner, assetId, assetAddress) {
-    try {
-
-      var account = this.web3Service.accounts[0];
-      console.log(account)
-
-      const deployedDepository = await this.Depository.deployed();
-      const createOwnershipTransaction = await deployedDepository.createFirstOwnership.sendTransaction(owner, assetId, assetAddress, { from: account });
-
-      if (createOwnershipTransaction) {
-        alert("Create First Ownership Transaction Successful");
-        console.log("createOwnershipTransaction: " + createOwnershipTransaction);
-      } else {
-        alert("Create First Ownership Transaction Failed");
-      }
     } catch (e) {
       console.log(e);
     }

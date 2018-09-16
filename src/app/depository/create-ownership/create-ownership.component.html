@@ -4,7 +4,10 @@
   <!-- #form="ngForm" (submit)="createAsset($event, form)" -->
   <div class="form-group col-md-6">
     <label for="assetName">Asset ID</label>
-    <input type="text" class="form-control" name="assetId" [(ngModel)]="newOwnership.assetId" placeholder="">
+    <select class="form-control" [(ngModel)]="newOwnership.assetId" name="assetId">
+      <option value="">Select Option...</option>
+      <option *ngFor="let asset of newAssets" value="{{asset}}">{{asset}}</option>
+    </select>
   </div>
   <div class="form-group col-md-6">
     <button type="button" class="btn btn-primary" (click)="getAssetDetails(newOwnership.assetId)">Import</button>

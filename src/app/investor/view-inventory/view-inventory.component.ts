@@ -23,6 +23,7 @@ export class ViewInventoryComponent implements OnInit {
   }
 
   getAssets(owner) {
+    this.ownerAssetList = [];
     console.log("Inside inventory get assets")
     for(var i=0; i<this.assetEvents.length; i++) {
       console.log(this.assetEvents[i]);

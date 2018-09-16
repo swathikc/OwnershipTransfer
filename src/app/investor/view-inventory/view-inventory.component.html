@@ -2,7 +2,13 @@
   My Inventory</h3>
 <div>
   <label for="owner">Owner</label>
-  <input type="text" class="form-control col-md-6" id="data" [(ngModel)]="owner" name="data" (change)="getAssets(owner)">
+  <!-- For Demo purpose these are pre-defined owners -->
+  <select class="form-control col-md-6" id="data" [(ngModel)]="owner" name="data" (change)="getAssets(owner)">
+    <option selected>Choose...</option>
+    <option value="0x39eC92f54285dE4B6f444Ad9055e8Ab981Eb7e61">0x39eC92f54285dE4B6f444Ad9055e8Ab981Eb7e61</option>
+    <option value="0x5772ea865cfa51eefa3c9e7fb6258a4f3e6585c1">0x5772ea865cfa51eefa3c9e7fb6258a4f3e6585c1</option>
+    <option value="0xd84cd39e8d774a6dcdfcdf83eb9bef990753df9b">0xd84cd39e8d774a6dcdfcdf83eb9bef990753df9b</option>
+  </select>
 </div>
 <div class="col-md-6">
   <table frame="box" class="table table-hover">
@@ -19,7 +25,7 @@
         <th scope="row">{{asset.args.id}}</th>
         <td>{{asset.args.name}}</td>
         <td>{{asset.args.desc}}</td>
-        <td>Sell</td>
+        <td>Sell</td><!-- this is temporary, should work on this! -->
       </tr>
     </tbody>
   </table>

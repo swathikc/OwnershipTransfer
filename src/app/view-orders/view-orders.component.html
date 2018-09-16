@@ -10,11 +10,11 @@
     <table frame="box" class="table table-sm">
       <tbody>
         <tr *ngFor="let order of orderEvents">
-          <div class="container">
+          <div>
             <h5>Order ID: </h5>
             <p>{{order.args.orderId}}</p>
             <h5>Asset ID: </h5>
-            <p>{{order.args.assetId}}</p>
+            <p>{{order.args.assetId}}</p> 
             <h5>Owner: </h5>
             <p>{{order.args.owner}}</p>
             <h5>Intent: </h5>

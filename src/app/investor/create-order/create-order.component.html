@@ -30,8 +30,12 @@
   </div>
   <div class="form-group col-md-6">
     <label for="owner">Broker</label>
-    <input type="text" class="form-control" id="broker" [(ngModel)]="newOrder.broker" (change)="selectedBroker($event.target.value)"
-      name="broker" placeholder="Ex: John Smith">
+    <select class="form-control" id="broker" name ="broker" [(ngModel)]="newOrder.broker" (change)="selectedBroker($event.target.value)">
+      <option selected>Choose...</option>
+      <option value="0x39eC92f54285dE4B6f444Ad9055e8Ab981Eb7e62">0x39eC92f54285dE4B6f444Ad9055e8Ab981Eb7e62</option>
+      <option value="0x5772ea865cfa51eefa3c9e7fb6258a4f3e6585c5">0x5772ea865cfa51eefa3c9e7fb6258a4f3e6585c5</option>
+      <option value="0xd84cd39e8d774a6dcdfcdf83eb9bef990753df98">0xd84cd39e8d774a6dcdfcdf83eb9bef990753df98</option>
+    </select>
   </div>
   <div class="form-group col-md-6">
     <label for="owner">Claim</label>
